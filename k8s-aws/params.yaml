@@ -1,0 +1,78 @@
+---
+parameters:
+  - name: cloud
+    parameters:
+      - name: region
+        fromEnv: AWS_DEFAULT_REGION
+      - name: availabilityZone
+        fromEnv: AWS_AZ
+      - name: sshKey
+        default: agilestacks
+        fromEnv: KEYPAIR
+  - name: dns
+    parameters:
+      - name: name
+        fromEnv: NAME
+      - name: baseDomain
+        fromEnv: BASE_DOMAIN
+  - name: terraform.bucket
+    parameters:
+      - name: name
+        fromEnv: STATE_BUCKET
+      - name: region
+        fromEnv: STATE_REGION
+  - name: component.kubernetes
+    parameters:
+    - name: bastionHost
+      fromEnv: K8S_AWS_BASTION_HOST
+    - name: natEipAllocations
+      value: '[]'
+    - name: existingVpc
+      fromEnv: K8S_AWS_VPC_ID
+      empty: allow
+    - name: vpcCidrBlock
+      fromEnv: K8S_AWS_VPC_CIDR_BLOCK
+      empty: allow
+    - name: existingMasterSubnetIds
+      fromEnv: K8S_AWS_MASTER_SUBNET_IDS
+      empty: allow
+    - name: existingWorkerSubnetIds
+      fromEnv: K8S_AWS_WORKER_SUBNET_IDS
+      empty: allow
+    - name: multiAz
+      fromEnv: K8S_AWS_MULTI_AZ
+  - name: component.kubernetes.master
+    parameters:
+    - name: count
+      fromEnv: K8S_AWS_MASTER_COUNT
+    - name: size
+      fromEnv: K8S_AWS_MASTER_INSTANCE_TYPE
+    - name: spotPrice
+      fromEnv: K8S_AWS_MASTER_SPOT_PRICE
+      empty: allow
+    - name: elb
+      fromEnv: K8S_AWS_MASTER_ELB
+  - name: component.kubernetes.worker
+    parameters:
+    - name: count
+      fromEnv: K8S_AWS_WORKER_COUNT
+    - name: size
+      fromEnv: K8S_AWS_WORKER_INSTANCE_TYPE
+    - name: spotPrice
+      fromEnv: K8S_AWS_WORKER_SPOT_PRICE
+      empty: allow
+    - name: natGw
+      fromEnv: K8S_AWS_WORKER_NAT_GW
+  - name: component.kubernetes.etcd
+    parameters:
+    - name: count
+      default: '3'
+      fromEnv: K8S_AWS_ETCD_COUNT
+    - name: size
+      fromEnv: K8S_AWS_ETCD_INSTANCE_TYPE
+    - name: spotPrice
+      fromEnv: K8S_AWS_ETCD_SPOT_PRICE
+      empty: allow
+    - name: internal
+      fromEnv: K8S_AWS_ETCD_INTERNAL
+      value: false

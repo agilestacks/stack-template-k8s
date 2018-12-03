@@ -1,0 +1,24 @@
+---
+version: 1
+kind: stack
+meta:
+  name: happy-meal:1
+  brief: Kubernetes with DevOps services and Tools
+  fromStack: k8s-aws
+components:
+  - name: tiller
+    source:
+      dir: components/tiller
+requires:
+  - aws
+  - kubernetes
+lifecycle:
+  verbs:
+    - deploy
+    - undeploy
+  order:
+    - tiller
+  mandatory:
+    - stack-k8s-aws
+    - tiller
+outputs: []
