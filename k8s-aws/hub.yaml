@@ -30,7 +30,6 @@ outputs:
     brief: Kubernetes API endpoint
   - name: cloud.region
   - name: cloud.availabilityZone
-  - name: stack-k8s-aws:cloud.bucket
   - name: stack-k8s-aws:cloud.role.master
   - name: stack-k8s-aws:cloud.role.worker
   - name: stack-k8s-aws:cloud.vpc.id

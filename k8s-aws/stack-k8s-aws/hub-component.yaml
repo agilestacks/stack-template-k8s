@@ -69,9 +69,6 @@ outputs:
   - name: nfs.server
     brief: NFS (EFS) server endpoint
     fromTfVar: efs_endpoint
-  - name: cloud.bucket
-    brief: S3 bucket used as file storage for current cluster
-    fromTfVar: s3_bucket
   - name: cloud.vpc.id
     fromTfVar: vpc
   - name: cloud.vpc.cidr
