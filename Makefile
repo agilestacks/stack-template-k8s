@@ -82,6 +82,10 @@ undeploy: $(ELABORATE_FILE_FS)
 		$(COMPONENT_LIST)
 .PHONY: undeploy
 
+sync:
+	$(hub) api instance sync $(NAME).$(BASE_DOMAIN) -s $(STATE_FILES) $(HUB_OPTS)
+.PHONY: sync
+
 ifneq ($(COMPONENT),)
 invoke: $(ELABORATE_FILE_FS)
 	$(eval , := ,)
