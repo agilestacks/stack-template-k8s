@@ -28,7 +28,7 @@ There are a number of targets in Makefile:
 
 ## Environment
 
-Each stack deployment via Control Plane gets a new file under `envrc/`. Use [direnv] to setup OS environment the Makefile and automation scripts refers to.
+Each stack deployment via SuperHub gets a new file under `envrc/`. Use [direnv] to setup OS environment the Makefile and automation scripts refers to.
 
 Add to `~/.bashrc`:
 
@@ -37,7 +37,21 @@ Add to `~/.bashrc`:
 Add to `.envrc`:
 
     export AWS_PROFILE=<profile to access cloud account>
-    source envrc/stack-name.cloud-account-name.superhub.io
+    source envrc/stack-name.cloud-account-domain.superhub.io
+
+Secret parameter values are not stored in plain-text but are sourced from OS environment instead. When stack instance is deployed via SuperHub the values are populated by backend automation task. You should inspect the Environment and set Okta application secret:
+
+    export DEX_OKTA_APP_CLIENT_SECRET=<randomn string>
+
+Optionally, obtain and add `HUB_TOKEN`:
+
+    $ hub login -u email@domain.tld
+    export HUB_TOKEN=<long random string>
+
+Hub CLI can fetch missing parameters from SuperHub API:
+
+    export HUB_ENVIRONMENT=Dev1
+    export HUB_STACK_INSTANCE=stack-name.cloud-account-domain.superhub.io
 
 Set the environment:
 
@@ -61,7 +75,7 @@ Atlassian published a good introduction to [Git subtree].
 
 ## Template update
 
-When Template is created via Control Plane it's content is initialized from a public Git repository hosted on GitHub. You can update template Makefile and support files by adding upstream remote, then fetching and merging changes as they became available:
+When Template is created via SuperHub it's content is initialized from a public Git repository hosted on GitHub. You can update template Makefile and support files by adding upstream remote, then fetching and merging changes as they became available:
 
     git remote add template-upstream \
         https://github.com/agilestacks/stack-template-k8s.git
@@ -75,7 +89,7 @@ Inspect changes, merge:
 
 Start by adding components to `hub.yaml` and parameters to `params/user.yaml`. Run `make elaborate`, then deploy with `make deploy COMPONENT=component-name`.
 
-Or push the code into Control Plane Git repo and deploy complete stack template from there.
+Or push the code into SuperHub Git repo and deploy complete stack template from there.
 
 
 [direnv]: https://direnv.net
