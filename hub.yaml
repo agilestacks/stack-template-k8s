@@ -9,6 +9,9 @@ components:
   - name: tiller
     source:
       dir: components/tiller
+  - name: automation-tasks-namespace
+    source:
+      dir: components/namespace
 requires:
   - aws
   - kubernetes
@@ -18,7 +21,9 @@ lifecycle:
     - undeploy
   order:
     - tiller
+    - automation-tasks-namespace
   mandatory:
     - stack-k8s-aws
     - tiller
+    - automation-tasks-namespace
 outputs: []

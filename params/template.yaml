@@ -1,5 +1,10 @@
 ---
 parameters:
+  - name: component.namespace
+    component: automation-tasks-namespace
+    parameters:
+    - name: name
+      value: automation-tasks
   - name: component.acm
     component: acm
     parameters:
