@@ -63,12 +63,6 @@ outputs:
   - name: dns.domain
     brief: Cluster domain
     fromTfVar: base_domain
-  - name: docker.registry
-    brief: Docker repository that has been created with the stack-k8s-aws
-    fromTfVar: ecr_repository
-  - name: nfs.server
-    brief: NFS (EFS) server endpoint
-    fromTfVar: efs_endpoint
   - name: cloud.vpc.id
     fromTfVar: vpc
   - name: cloud.vpc.cidr

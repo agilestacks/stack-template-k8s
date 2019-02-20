@@ -30,14 +30,10 @@ parameters:
     parameters:
       - name: dashboard
         value: 'true'
-      - name: password
-        value: $apr1$2l2dF67t$5DqBxPZNCAMRNQJYofj680
       - name: ssoUrlPrefix
         value: apps
       - name: urlPrefix
         value: app
-      - name: user
-        value: admin
   - name: component.jenkins
     parameters:
       - name: namespace
