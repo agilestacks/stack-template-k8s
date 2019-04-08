@@ -14,7 +14,7 @@ parameters:
         value: >
           app.${component.acm.domain} *.app.${component.acm.domain}
           apps.${component.acm.domain} *.apps.${component.acm.domain}
-          auth.${component.acm.domain} git.${component.acm.domain}
+          auth.${component.acm.domain} *.${component.acm.domain}
           *.svc.${component.acm.domain}
   - name: component.dex
     parameters:
