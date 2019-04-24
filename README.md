@@ -24,7 +24,8 @@ There are a number of targets in Makefile:
 - `deploy` to deploy complete stack. You may want to add `-o` to `hub` command to start re-deployment with specific component, e.g. `HUB_OPTS='-o traefik'`.
 - `deploy COMPONENT=` to re-deploy specific stack component(s) by name, e.g. `make deploy COMPONENT=postgresql,redis`.
 - `kubeconfig` to generate and save Kubeconfig context to access Kubernetes stack instance.
-- `explain` to review deployed stack parameters and outputs.
+- `explain` and `explain-oplog` to review deployed stack parameters and outputs, operations history.
+- `sync` to synchronize stack state from Hub CLI state file to SuperHub to keep UI information up-to-date.
 
 ## Environment
 
