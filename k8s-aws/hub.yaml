@@ -28,6 +28,9 @@ outputs:
     brief: Stack domain
   - name: stack-k8s-aws:kubernetes.api.endpoint
     brief: Kubernetes API endpoint
+  - name: stack-k8s-aws:kubernetes.api.caCert
+  - name: stack-k8s-aws:kubernetes.api.clientCert
+  - name: stack-k8s-aws:kubernetes.api.clientKey
   - name: cloud.region
   - name: cloud.availabilityZone
   - name: stack-k8s-aws:cloud.role.master
