@@ -31,6 +31,7 @@ outputs:
   - name: stack-k8s-aws:kubernetes.api.caCert
   - name: stack-k8s-aws:kubernetes.api.clientCert
   - name: stack-k8s-aws:kubernetes.api.clientKey
+  - name: cloud.kind
   - name: cloud.region
   - name: cloud.availabilityZone
   - name: stack-k8s-aws:cloud.role.master
