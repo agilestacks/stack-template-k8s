@@ -46,9 +46,9 @@ $(RESTORE_PARAMS_FILE): $(RESTORE_BUNDLE_FILE)
 	$(hub) backup unbundle $(RESTORE_BUNDLE_FILE) -o $(RESTORE_PARAMS_FILE)
 endif
 
-$(ELABORATE_FILE_FS): hub.yaml $(TEMPLATE_PARAMS) $(STACK_PARAMS) $(RESTORE_PARAMS_FILE) params/user.yaml k8s-aws/hub.yaml k8s-aws/params.yaml k8s-aws/stack-k8s-aws/hub-component.yaml
+$(ELABORATE_FILE_FS): hub.yaml $(TEMPLATE_PARAMS) $(STACK_PARAMS) $(RESTORE_PARAMS_FILE) params/user.yaml cloud.yaml k8s.yaml
 	$(hub) elaborate \
-		hub.yaml $(TEMPLATE_PARAMS) $(STACK_PARAMS) $(RESTORE_PARAMS_FILE) params/user.yaml \
+		hub.yaml cloud.yaml k8s.yaml $(TEMPLATE_PARAMS) $(STACK_PARAMS) $(RESTORE_PARAMS_FILE) params/user.yaml \
 		$(HUB_OPTS) \
 		-o $(ELABORATE_FILES)
 
