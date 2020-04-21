@@ -170,3 +170,21 @@ parameters:
     parameters:
       - name: license
         fromEnv: COMPONENT_WOWZA_LICENSE
+  - name: component.worker-pool
+    parameters:
+      - name: autoscaling.enabled
+        value: 'false'
+      - name: count
+        value: ${component.kubernetes.worker.count}
+      - name: instance.size
+        value: ${component.kubernetes.worker.size}
+      - name: mixed.allocationStrategy
+        value: lowest-price
+      - name: mixed.onDemandBaseCapacity
+        value: '0'
+      - name: mixed.onDemandPercentageAboveBaseCapacity
+        value: '0'
+      - name: name
+        value: ${dns.domain}
+      - name: volume.size
+        value: '30'
