@@ -70,12 +70,18 @@ parameters:
         default: 10.0.0.0/16
       - name: worker.count
         default: '3'
-      - name: worker.natGw
-        default: 'false'
       - name: worker.size
         default: r4.large
-      - name: worker.spotPrice
-        default: ''
+      - name: worker.autoscaling.enabled
+        value: 'false'
+      - name: worker.mixed.allocationStrategy
+        value: capacity-optimized
+      - name: worker.mixed.onDemandBaseCapacity
+        value: '0'
+      - name: worker.mixed.onDemandPercentageAboveBaseCapacity
+        value: '0'
+      - name: worker.volume.size
+        value: '30'
   - name: component.minio
     parameters:
       - name: secretKey
@@ -173,18 +179,18 @@ parameters:
   - name: component.worker-pool
     parameters:
       - name: autoscaling.enabled
-        value: 'false'
+        value: ${component.kubernetes.worker.autoscaling.enabled}
       - name: count
         value: ${component.kubernetes.worker.count}
       - name: instance.size
         value: ${component.kubernetes.worker.size}
       - name: mixed.allocationStrategy
-        value: lowest-price
+        value: ${component.kubernetes.worker.mixed.allocationStrategy}
       - name: mixed.onDemandBaseCapacity
-        value: '0'
+        value: ${component.kubernetes.worker.mixed.onDemandBaseCapacity}
       - name: mixed.onDemandPercentageAboveBaseCapacity
-        value: '0'
+        value: ${component.kubernetes.worker.mixed.onDemandPercentageAboveBaseCapacity}
       - name: name
         value: ${dns.domain}
       - name: volume.size
-        value: '30'
+        value: ${component.kubernetes.worker.volume.size}
