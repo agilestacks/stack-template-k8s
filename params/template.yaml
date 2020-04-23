@@ -74,7 +74,7 @@ parameters:
         default: r4.large
       - name: worker.autoscaling.enabled
         value: 'false'
-      - name: worker.mixed.allocationStrategy
+      - name: worker.mixed.spotAllocationStrategy
         value: capacity-optimized
       - name: worker.mixed.onDemandBaseCapacity
         value: '0'
@@ -184,8 +184,8 @@ parameters:
         value: ${component.kubernetes.worker.count}
       - name: instance.size
         value: ${component.kubernetes.worker.size}
-      - name: mixed.allocationStrategy
-        value: ${component.kubernetes.worker.mixed.allocationStrategy}
+      - name: mixed.spotAllocationStrategy
+        value: ${component.kubernetes.worker.mixed.spotAllocationStrategy}
       - name: mixed.onDemandBaseCapacity
         value: ${component.kubernetes.worker.mixed.onDemandBaseCapacity}
       - name: mixed.onDemandPercentageAboveBaseCapacity
