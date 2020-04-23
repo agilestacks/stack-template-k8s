@@ -190,7 +190,7 @@ parameters:
         value: ${component.kubernetes.worker.mixed.onDemandBaseCapacity}
       - name: mixed.onDemandPercentageAboveBaseCapacity
         value: ${component.kubernetes.worker.mixed.onDemandPercentageAboveBaseCapacity}
-      - name: name
-        value: ${dns.domain}
+      - name: shortName
+        value: builtin
       - name: volume.size
         value: ${component.kubernetes.worker.volume.size}
