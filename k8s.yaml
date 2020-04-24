@@ -56,13 +56,18 @@ parameters:
     parameters:
     - name: count
       fromEnv: K8S_AWS_WORKER_COUNT
+    - name: maxCount
+      fromEnv: K8S_AWS_WORKER_MAX_COUNT
     - name: size
       fromEnv: K8S_AWS_WORKER_INSTANCE_TYPE
-    - name: spotPrice
-      fromEnv: K8S_AWS_WORKER_SPOT_PRICE
-      empty: allow
-    - name: natGw
-      fromEnv: K8S_AWS_WORKER_NAT_GW
+    - name: autoscaling.enabled
+      fromEnv: K8S_AWS_WORKER_AUTOSCALING_ENABLED
+    - name: mixed.onDemandBaseCapacity
+      fromEnv: K8S_AWS_WORKER_MIXED_ON_DEMAND_BASE_CAPACITY
+    - name: mixed.onDemandPercentageAboveBaseCapacity
+      fromEnv: K8S_AWS_WORKER_MIXED_ON_DEMAND_PERCENTAGE_ABOVE_BASE_CAPACITY
+    - name: mixed.spotAllocationStrategy
+      fromEnv: K8S_AWS_WORKER_MIXED_SPOT_ALLOCATION_STRATEGY
   - name: component.kubernetes.etcd
     parameters:
     - name: count
