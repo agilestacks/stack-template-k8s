@@ -8,6 +8,9 @@ components:
   - name: stack-k8s-aws
     source:
       dir: stack-k8s-aws
+  - name: initial-workers
+    source:
+      dir: components/k8s-mixed-worker-nodes
   - name: tiller
     source:
       dir: components/tiller
@@ -24,10 +27,12 @@ lifecycle:
     - undeploy
   order:
     - stack-k8s-aws
+    - initial-workers
     - tiller
     - automation-tasks-namespace
   mandatory:
     - stack-k8s-aws
+    - initial-workers
     - tiller
     - automation-tasks-namespace
 outputs:
