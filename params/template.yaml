@@ -44,8 +44,6 @@ parameters:
         default: 'false'
       - name: etcd.count
         default: '3'
-      - name: etcd.internal
-        value: 'false'
       - name: etcd.size
         default: t2.small
       - name: etcd.spotPrice
