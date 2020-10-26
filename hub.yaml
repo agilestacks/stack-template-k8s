@@ -3,7 +3,7 @@ version: 1
 kind: stack
 meta:
   name: happy-meal:1
-  brief: Kubernetes with DevOps services and Tools
+  brief: Kubernetes with monitoring and DevOps tools
 components:
   - name: stack-k8s-aws
     source:
